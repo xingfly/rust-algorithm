@@ -1,9 +1,8 @@
 [package]
-name = "algorithm"
+name = "chapter1"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-chapter1 = {path = "chapter1"}

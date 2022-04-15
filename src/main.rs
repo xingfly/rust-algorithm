@@ -1,3 +1,7 @@
+use chapter1::base::stack::stack_test_1;
+
+extern crate chapter1;
+
 fn main() {
-    println!("Hello, world!");
+    stack_test_1();
 }
