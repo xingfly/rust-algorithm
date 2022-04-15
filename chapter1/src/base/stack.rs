@@ -41,6 +41,7 @@ impl<T> Stack<T> {
     }
 }
 
+// 栈测试
 pub fn stack_test_1() {
     let mut stack = Stack::new();
     for i in 0..3 {
@@ -104,3 +105,32 @@ fn par_checker(par_list: &str) -> bool {
     }
     balance && stack.is_empty()
 }
+
+// 进制转换
+pub fn stack_test_3() {
+    let bin_str = base_converter(233, 2);
+    let hex_str = base_converter(43, 16);
+    println!("10 is b{bin_str}");
+    println!("43 is x{hex_str}");
+}
+
+fn base_converter(mut dec_num: u32, base: u32) -> String {
+    let digits = [
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+    ];
+    let mut rem_stack = Stack::new();
+    // 余数入栈
+    while dec_num > 0 {
+        let rem = dec_num % base;
+        rem_stack.push(rem);
+        dec_num /= base;
+    }
+    let mut base_str = "".to_string();
+    // 栈中元素出栈组成字符串
+    while !rem_stack.is_empty() {
+        let rem = rem_stack.pop().unwrap() as usize;
+        base_str += &digits[rem].to_string();
+    }
+    base_str
+}
+
