@@ -83,3 +83,26 @@ pub fn deque_test_1() {
     println!("size:{},is_empty:{}", deque.size(), deque.is_empty());
     println!("content:{:?}", deque);
 }
+
+// 回文检测
+pub fn deque_test_2() {
+    let pal = "abba";
+    let is_pal = pal_checker(pal);
+    println!("{pal}是否为回文：{is_pal}")
+}
+
+fn pal_checker(pal: &str) -> bool {
+    let mut deque = Deque::new(pal.len());
+    for c in pal.chars() {
+        let _r = deque.add_rear(c);
+    }
+    let mut is_pal = true;
+    while deque.size() > 1 && is_pal {
+        let head = deque.remove_front();
+        let tail = deque.remove_rear();
+        if head != tail {
+            is_pal = false;
+        }
+    }
+    is_pal
+}
