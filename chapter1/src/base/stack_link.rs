@@ -21,7 +21,7 @@ struct StackLink<T> {
     top: Link<T>,
 }
 
-impl<T: Clone> StackLink<T> {
+impl<T> StackLink<T> {
     fn new() -> Self {
         StackLink {
             size: 0,
@@ -64,6 +64,62 @@ impl<T: Clone> StackLink<T> {
     fn is_empty(&self) -> bool {
         self.size == 0
     }
+
+    fn into_iter(self) -> IntoIter<T> {
+        IntoIter(self)
+    }
+
+    fn iter(&self) -> Iter<T> {
+        Iter {
+            next: self.top.as_deref()
+        }
+    }
+
+    fn iter_mut(&mut self) -> IterMut<T> {
+        IterMut {
+            next: self.top.as_deref_mut()
+        }
+    }
+}
+
+struct IntoIter<T>(StackLink<T>);
+
+impl<T> Iterator for IntoIter<T> {
+    type Item = T;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.0.pop()
+    }
+}
+
+struct Iter<'a, T> {
+    next: Option<&'a Node<T>>,
+}
+
+impl<'a, T> Iterator for Iter<'a, T> {
+    type Item = &'a T;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.next.map(|node| {
+            self.next = node.next.as_deref();
+            &node.data
+        })
+    }
+}
+
+struct IterMut<'a, T> {
+    next: Option<&'a mut Node<T>>,
+}
+
+impl<'a, T> Iterator for IterMut<'a, T> {
+    type Item = &'a mut T;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.next.take().map(|node| {
+            self.next = node.next.as_deref_mut();
+            &mut node.data
+        })
+    }
 }
 
 pub fn stack_link_test_1() {
@@ -76,5 +132,18 @@ pub fn stack_link_test_1() {
     }
     println!("top {:?} size {}", s.peek().unwrap(), s.size());
     println!("top {:?} size {}", s.pop().unwrap(), s.size());
-    println!("is_empty:{},stack:{:?}", s.is_empty(), s)
+    println!("is_empty:{},stack:{:?}", s.is_empty(), s);
+
+    for item in s.iter() {
+        println!("{item}");
+    }
+
+    for item in s.iter_mut() {
+        *item = *item + 1;
+        println!("{item}");
+    }
+
+    for item in s.into_iter() {
+        println!("{item}");
+    }
 }
