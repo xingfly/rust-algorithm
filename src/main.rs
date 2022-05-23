@@ -1,4 +1,4 @@
-use chapter1::recursive::dp::{dp_test_2, dp_test_3};
+use chapter::search::search::search_test_1;
 
 fn main() {
     // stack_test_1();
@@ -12,6 +12,7 @@ fn main() {
     // recursive_test_1();
     // recursive_test_2();
     // recursive_test_3();
-    dp_test_2();
-    dp_test_3()
+    // dp_test_2();
+    // dp_test_3()
+    search_test_1()
 }

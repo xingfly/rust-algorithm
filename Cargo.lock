@@ -6,9 +6,9 @@ version = 3
 name = "algorithm"
 version = "0.1.0"
 dependencies = [
- "chapter1",
+ "chapter",
 ]
 
 [[package]]
-name = "chapter1"
+name = "chapter"
 version = "0.1.0"

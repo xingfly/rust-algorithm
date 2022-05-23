@@ -1,5 +1,5 @@
-use std::cmp::min;
 // 动态规划
+// 小问题推导大问题
 use std::collections::{BTreeMap, HashMap};
 
 // 找零-基于递归的解决方案
@@ -165,7 +165,7 @@ pub fn dp_test_3() {
     let cashes = [1, 5, 10, 20, 50];
     let mut cash_map = BTreeMap::new();
     let mut cash_list = [0; (AMOUNT + 1) as usize];
-    let cash_num = dp_rec_mc(&cashes, AMOUNT, &mut cash_map);
+    let _cash_num = dp_rec_mc(&cashes, AMOUNT, &mut cash_map);
     let cash_num = dp_rec_mc_show(&cashes, AMOUNT, &mut cash_map, &mut cash_list);
     println!("找零￥{} 需要 {} 次", AMOUNT, cash_num);
     println!("{:?}", cash_map);
