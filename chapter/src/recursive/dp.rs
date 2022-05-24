@@ -108,8 +108,8 @@ pub fn dp_rec_mc(cashes: &[u32], amount: u32, cash_map: &mut BTreeMap<u32, u32>)
             .filter(|&cash| *cash <= current_amount)
             .collect::<Vec<&u32>>() {
             // 假设此时当前金额为 6，可用找零分别为1和5
-            // index = 6 - 5 -> 此时index为1 -> 1代表着当找零为1元时需要找几次
-            // index = 6 - 1 -> 此时index为5 -> 5代表着当找零为5元时需要找几次
+            // index = 6 - 5 -> 此时index为1 -> 1代表着当找零为1元时需要找几次(通过查询之前的结果找到几次)
+            // index = 6 - 1 -> 此时index为5 -> 5代表着当找零为5元时需要找几次(通过查询之前的结果找到几次)
             let index = current_amount - cash;
             // 两次循环分别计算当前的找零次数
             let current_cash_times = 1 + match cash_map.get(&index) {

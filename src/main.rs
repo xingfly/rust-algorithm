@@ -1,4 +1,4 @@
-use chapter::search::search::search_test_1;
+use chapter::search::hash::{hash_test_2};
 
 fn main() {
     // stack_test_1();
@@ -14,5 +14,7 @@ fn main() {
     // recursive_test_3();
     // dp_test_2();
     // dp_test_3()
-    search_test_1()
+    // search_test_1()
+    // hash_test_1();
+    hash_test_2();
 }
