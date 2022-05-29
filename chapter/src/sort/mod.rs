@@ -9,4 +9,8 @@
 // 计数排序
 // 桶排序
 // 基数排序
+
+// 冒泡排序
 pub mod bubble_sort;
+// 快速排序
+pub mod quick_sort;

@@ -1,4 +1,4 @@
-use chapter::sort::bubble_sort::sort_test_1;
+use chapter::sort::quick_sort::quick_sort_test_1;
 
 fn main() {
     // stack_test_1();
@@ -17,5 +17,6 @@ fn main() {
     // search_test_1()
     // hash_test_1();
     // hash_test_2();
-    sort_test_1();
+    // bubble_sort_test_1();
+    quick_sort_test_1();
 }

@@ -70,7 +70,7 @@ fn bubble_sort_cocktail(nums: &mut [i32]) {
 }
 
 
-pub fn sort_test_1() {
+pub fn bubble_sort_test_1() {
     let mut arr = vec![5, 4, 3, 1, 6, 2, 1, 3, 9, 12, 43];
     bubble_sort_while_impl(&mut arr);
     bubble_sort_for_impl(&mut arr);
